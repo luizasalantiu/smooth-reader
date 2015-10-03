@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+  <link href="http://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/TweenMax.min.js"></script>
+  <script src="content/rabbiEisikofCrakow.js"></script>
+  <script src="scripts/effects/fly.js"></script>
+  <script src="scripts/effects/slide.js"></script>
+  <script src="scripts/effects/expandAndFade.js"></script>
+  <script src="scripts/util.js"></script>
+  <script src="scripts/controls.js" defer></script>
+  <script src="scripts/story.js" defer></script>
+  <script src="scripts/storyAnimation.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="main">
+      <div id="story">
+        <script id="story-template" type="text/template">
+          <div class="content">
+          <div class="title">{{title}}</div>
+          {{#sections}}
+          <p>{{.}}</p>
+          {{/sections}}
+          <div>
+        </script>
+      </div>
+      <div id="controls">
+        <div id="sliderWrapper">
+          <div id="slider"></div>
+        </div>
+        <button id="play">play</button>
+        <button id="pause">pause</button>
+        <button id="restart">restart</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
