@@ -86,17 +86,17 @@ body {
 
 /* line 21, ../sass/main.scss */
 .main {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 100%;
 }
-/* line 26, ../sass/main.scss */
+/* line 24, ../sass/main.scss */
 .main > * {
   margin: 0 auto;
 }
-/* line 30, ../sass/main.scss */
+/* line 28, ../sass/main.scss */
 .main #story {
-  /*  min-height: 400px; */
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   line-height: 1.5;
   width: 90%;
 }
@@ -131,17 +131,22 @@ body {
 /*------------------------------------*\
     Controls
 \*------------------------------------*/
-/* line 68, ../sass/main.scss */
-#controls {
-  display: none;
-  width: 80%;
-  text-align: center;
-  margin-top: 10px;
+/* line 71, ../sass/main.scss */
+#controlsWrapper {
+  width: 100%;
+  height: 40px;
+  margin-top: -120px;
+  padding: 50px 0 30px;
 }
-/* line 74, ../sass/main.scss */
-#controls button {
+/* line 77, ../sass/main.scss */
+#controlsWrapper #controls {
+  display: none;
+  text-align: center;
+}
+/* line 81, ../sass/main.scss */
+#controlsWrapper #controls button {
   margin-left: 15px;
-  padding: 10px;
+  padding: 20px;
   border: none;
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -150,25 +155,20 @@ body {
   background: none;
   color: #676767;
 }
-/* line 85, ../sass/main.scss */
-#controls button:hover {
+/* line 92, ../sass/main.scss */
+#controlsWrapper #controls button:hover {
   color: #242424;
 }
-/* line 90, ../sass/main.scss */
-#controls #pause {
-  display: none;
-}
-/* line 94, ../sass/main.scss */
-#controls #slider {
+/* line 97, ../sass/main.scss */
+#controlsWrapper #controls #slider {
   width: 100%;
-  margin: 10px auto;
   height: 0.02em;
   background: #E4E4E4;
   border-color: #EAEAEA #E4E4E4 #6DD0CB;
   border-width: 1px;
 }
-/* line 102, ../sass/main.scss */
-#controls #slider span {
+/* line 104, ../sass/main.scss */
+#controlsWrapper #controls #slider span {
   width: 0.9em;
   height: 0.85em;
   top: -0.5em;
