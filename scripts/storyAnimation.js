@@ -4,14 +4,12 @@ var StoryAnimation = (function() {
     var _lettersClass = "letter";
     var _timeline = new TimelineLite();
 
-    // Title animation config
     _titleAnimConfig = {
         flyInDuration: 7,
         stayDuration: 2,
         fadeOutDuration: 2
     };
 
-    // Content animation config
     _contentAnimConfig = {
         delay: _titleAnimConfig,
         animationInDuration: 0.7,
