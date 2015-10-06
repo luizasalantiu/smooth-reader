@@ -1,0 +1,125 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Muli', Verdana, Helvetica, sans-serif;
+  color: #191919; }
+
+body {
+  overflow: hidden; }
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  margin: 0px auto;
+  max-width: 800px; }
+
+.main {
+  height: 100%; }
+  .main > * {
+    margin: 0 auto; }
+  .main #story {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1.5;
+    width: 90%; }
+    .main #story .title {
+      width: 100%;
+      text-align: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5em;
+      letter-spacing: 4px; }
+      .main #story .title .letter {
+        display: inline-block; }
+    .main #story .content {
+      position: relative;
+      padding: 40px 0; }
+      .main #story .content > * {
+        position: absolute; }
+      .main #story .content p {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        transform: translateX(10px); }
+
+/*------------------------------------*    Controls
+\*------------------------------------*/
+#controlsWrapper {
+  width: 100%;
+  height: 40px;
+  margin-top: -120px;
+  padding: 50px 0 30px; }
+  #controlsWrapper #controls {
+    display: none;
+    text-align: center; }
+    #controlsWrapper #controls button {
+      margin-left: 14px;
+      padding: 20px;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-family: 'Muli', Verdana, Helvetica, sans-serif;
+      font-size: 0.7em;
+      background: none;
+      color: #676767; }
+      #controlsWrapper #controls button:hover {
+        color: #242424; }
+    #controlsWrapper #controls #slider {
+      width: 100%;
+      height: 0.02em;
+      background: #E4E4E4;
+      border-color: #EAEAEA #E4E4E4 #6DD0CB;
+      border-width: 1px; }
+      #controlsWrapper #controls #slider span {
+        width: 0.9em;
+        height: 0.85em;
+        top: -0.5em;
+        margin-left: -0.45em;
+        border-color: #D7D7D7;
+        border-radius: 10px; }

@@ -1,5 +1,3 @@
-@import "compass/reset";
-
 html, body {
   width: 100%;
   height: 100%;
@@ -79,7 +77,7 @@ $controlsPaddingBottom: 30px;
     text-align: center;
 
     button {
-      margin-left: 15px;
+      margin-left: 14px;
       padding: 20px;
       border: none;
       text-transform: uppercase;
