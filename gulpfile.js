@@ -21,8 +21,9 @@ var paths = {
         'content/*.js',
         'src/scripts/effects/*.js',
         'src/scripts/util.js',
-        'src/scripts/controls.js',
+        'src/scripts/timelineControls.js',
         'src/scripts/story.js',
+        'src/scripts/storyViewModel.js',
         'src/scripts/storyAnimation.js',
         'src/scripts/main.js'
     ],

@@ -1,6 +1,6 @@
 var StoryAnimation = (function() {
     var _storyViewModel;
-    var _timelineControls = TimelineControls;
+    var _timelineControls;
     var _lettersClass = "letter";
     var _timeline = new TimelineLite();
 
@@ -64,8 +64,9 @@ var StoryAnimation = (function() {
         animateTitle().animateContentWithDelay(animateContentDelay);
     }
 
-    function init(storyViewModel) {
+    function init(storyViewModel, timelineControls) {
         _storyViewModel = storyViewModel;
+        _timelineControls = timelineControls;
         _timelineControls.init(_timeline, this);
     }
 

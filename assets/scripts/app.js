@@ -203,24 +203,24 @@ var TimelineControls = (function() {
         });
     }
 
-    function _addEventListeners() {
+    function _addTimelineListeners() {
         timeline.eventCallback("onUpdate", _updateSlider);
         timeline.eventCallback("onComplete", _updateForState, [state.completed]);
+    }
+
+    function onStartAnimation() {
         $wrapper.mouseenter(function() {
             $controls.show();
         }).mouseleave(function() {
             $controls.hide();
         });
-    }
-
-    function onStartAnimation() {
         _updateForState(state.playing);
     }
 
     function init(tl) {
         timeline = tl;
         _initSlider();
-        _addEventListeners();
+        _addTimelineListeners();
     }
 
     return {
@@ -228,7 +228,19 @@ var TimelineControls = (function() {
         onStartAnimation: onStartAnimation
     };
 })();
-// View Model
+function Story(text) {
+    if (typeof text !== 'string' && !(text instanceof String)) throw new Error("Please provide a string to create a story object.");
+    this.sections = text.split(/\r?\n/);
+    this.title = this.sections.shift();
+}
+
+Story.prototype.getTitle = function() {
+    return this.title;
+};
+
+Story.prototype.getSections = function() {
+    return this.sections;
+};
 var StoryViewModel = (function() {
     var $el = $("#story");
     var $content;
@@ -278,24 +290,9 @@ var StoryViewModel = (function() {
         getSections: getSections
     };
 })();
-
-// Model
-function Story(text) {
-    if (typeof text !== 'string' && !(text instanceof String)) throw new Error("Please provide a string to create a story object.");
-    this.sections = text.split(/\r?\n/);
-    this.title = this.sections.shift();
-}
-
-Story.prototype.getTitle = function() {
-    return this.title;
-};
-
-Story.prototype.getSections = function() {
-    return this.sections;
-};
 var StoryAnimation = (function() {
     var _storyViewModel;
-    var _timelineControls = TimelineControls;
+    var _timelineControls;
     var _lettersClass = "letter";
     var _timeline = new TimelineLite();
 
@@ -359,8 +356,9 @@ var StoryAnimation = (function() {
         animateTitle().animateContentWithDelay(animateContentDelay);
     }
 
-    function init(storyViewModel) {
+    function init(storyViewModel, timelineControls) {
         _storyViewModel = storyViewModel;
+        _timelineControls = timelineControls;
         _timelineControls.init(_timeline, this);
     }
 
@@ -372,5 +370,5 @@ var StoryAnimation = (function() {
     };
 })();
 var story = new Story(rabbiEisikOfCrakow.story);
-StoryAnimation.init(StoryViewModel);
+StoryAnimation.init(StoryViewModel, TimelineControls);
 StoryViewModel.init(story, StoryAnimation.start); // TODO use a pubsub for event notification
