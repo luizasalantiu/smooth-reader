@@ -62,21 +62,21 @@ $.fn.flyIn.defaults = {
 (function($) {
     $.fn.slideEach = function(timeline, options) {
         var opts = $.extend({}, $.fn.slideEach.defaults, options);
-        opts.totalDuration = opts.durationIn + opts.durationStay + opts.durationOut;
+
         this.each(function(index) {
-            _slideElement(timeline, this, index, opts);
+            _slideElement(timeline, this, opts);
         });
 
         return this;
     };
 
-    function _slideElement(timeline, elem, index, opts) {
-        var thisElemDelay = opts.offsetDelay + index * (opts.totalDuration + opts.durationBetween);
+    // With no delay, animations would happen sequentially. Delay specified is relative to previous animation.
+    function _slideElement(timeline, elem, opts) {
         timeline.to(elem, opts.durationIn, {
             opacity: 1,
             x: 0,
             ease: opts.easeEffectIn,
-            delay: thisElemDelay
+            delay: opts.durationBetween
         })
             .to(elem, opts.durationOut, {
                 opacity: 0,
@@ -85,14 +85,13 @@ $.fn.flyIn.defaults = {
                 delay: opts.durationStay
             });
     }
-
 }(jQuery));
 
 // Plugin defaults
 $.fn.slideEach.defaults = {
     offsetDelay: 0,
     durationIn: 1,
-    durationStay: 2,
+    durationStay: 6,
     durationOut: 0.5,
     durationBetween: 0,
     // See http://greensock.com/ease-visualizer for more ease options
@@ -302,14 +301,6 @@ var StoryAnimation = (function() {
         fadeOutDuration: 2
     };
 
-    _contentAnimConfig = {
-        delay: _titleAnimConfig,
-        animationInDuration: 0.7,
-        animationOutDuration: 0.5,
-        animationStayDuration: 3,
-        delayBetweenAnimations: 0.4
-    };
-
     function animateTitle() {
         var $letters = util.convertHtmlToLetters(_storyViewModel.getTitle(), _lettersClass);
         $letters.flyIn({
@@ -338,9 +329,7 @@ var StoryAnimation = (function() {
 
     function animateContent() {
         _timelineControls.onStartAnimation();
-        _storyViewModel.getSections().slideEach(_timeline, {
-            offsetDelay: 0,
-        });
+        _storyViewModel.getSections().slideEach(_timeline);
 
         return that;
     }
@@ -353,7 +342,7 @@ var StoryAnimation = (function() {
 
     function start() {
         var animateContentDelay = getTitleAnimMillisec();
-        animateTitle().animateContentWithDelay(animateContentDelay);
+        animateTitle().hideTitleWithDelay(animateContentDelay).animateContentWithDelay(animateContentDelay);
     }
 
     function init(storyViewModel, timelineControls) {

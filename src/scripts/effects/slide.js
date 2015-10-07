@@ -1,21 +1,21 @@
 (function($) {
     $.fn.slideEach = function(timeline, options) {
         var opts = $.extend({}, $.fn.slideEach.defaults, options);
-        opts.totalDuration = opts.durationIn + opts.durationStay + opts.durationOut;
+
         this.each(function(index) {
-            _slideElement(timeline, this, index, opts);
+            _slideElement(timeline, this, opts);
         });
 
         return this;
     };
 
-    function _slideElement(timeline, elem, index, opts) {
-        var thisElemDelay = opts.offsetDelay + index * (opts.totalDuration + opts.durationBetween);
+    // With no delay, animations would happen sequentially. Delay specified is relative to previous animation.
+    function _slideElement(timeline, elem, opts) {
         timeline.to(elem, opts.durationIn, {
             opacity: 1,
             x: 0,
             ease: opts.easeEffectIn,
-            delay: thisElemDelay
+            delay: opts.durationBetween
         })
             .to(elem, opts.durationOut, {
                 opacity: 0,
@@ -24,14 +24,13 @@
                 delay: opts.durationStay
             });
     }
-
 }(jQuery));
 
 // Plugin defaults
 $.fn.slideEach.defaults = {
     offsetDelay: 0,
     durationIn: 1,
-    durationStay: 2,
+    durationStay: 6,
     durationOut: 0.5,
     durationBetween: 0,
     // See http://greensock.com/ease-visualizer for more ease options

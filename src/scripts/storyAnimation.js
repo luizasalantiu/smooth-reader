@@ -10,14 +10,6 @@ var StoryAnimation = (function() {
         fadeOutDuration: 2
     };
 
-    _contentAnimConfig = {
-        delay: _titleAnimConfig,
-        animationInDuration: 0.7,
-        animationOutDuration: 0.5,
-        animationStayDuration: 3,
-        delayBetweenAnimations: 0.4
-    };
-
     function animateTitle() {
         var $letters = util.convertHtmlToLetters(_storyViewModel.getTitle(), _lettersClass);
         $letters.flyIn({
@@ -46,9 +38,7 @@ var StoryAnimation = (function() {
 
     function animateContent() {
         _timelineControls.onStartAnimation();
-        _storyViewModel.getSections().slideEach(_timeline, {
-            offsetDelay: 0,
-        });
+        _storyViewModel.getSections().slideEach(_timeline);
 
         return that;
     }
@@ -61,7 +51,7 @@ var StoryAnimation = (function() {
 
     function start() {
         var animateContentDelay = getTitleAnimMillisec();
-        animateTitle().animateContentWithDelay(animateContentDelay);
+        animateTitle().hideTitleWithDelay(animateContentDelay).animateContentWithDelay(animateContentDelay);
     }
 
     function init(storyViewModel, timelineControls) {
