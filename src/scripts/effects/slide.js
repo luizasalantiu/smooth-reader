@@ -11,14 +11,17 @@
 
     // With no delay, animations would happen sequentially. Delay specified is relative to previous animation.
     function _slideElement(timeline, elem, opts) {
+        var initialZindex = $(elem).css("z-index");
         timeline.to(elem, opts.durationIn, {
             opacity: 1,
             x: 0,
+            zIndex: 1000,
             ease: opts.easeEffectIn,
             delay: opts.durationBetween
         })
             .to(elem, opts.durationOut, {
                 opacity: 0,
+                zIndex: initialZindex,
                 x: -150,
                 ease: opts.easeEffectOut,
                 delay: opts.durationStay

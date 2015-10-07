@@ -30,6 +30,9 @@ var paths = {
     sass: [
         'src/sass/reset.scss',
         'src/sass/main.scss'
+    ],
+    sassWatch: [
+        'src/sass/**/*.scss'
     ]
 };
 
@@ -73,7 +76,7 @@ gulp.task('scripts', function() {
 // Watch files for changes
 gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['lint', 'scripts']);
-    gulp.watch(paths.sass, ['css']);
+    gulp.watch(paths.sassWatch, ['css']);
 });
 
 // Default task
