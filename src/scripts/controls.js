@@ -63,24 +63,24 @@ var TimelineControls = (function() {
         });
     }
 
-    function _addEventListeners() {
+    function _addTimelineListeners() {
         timeline.eventCallback("onUpdate", _updateSlider);
         timeline.eventCallback("onComplete", _updateForState, [state.completed]);
+    }
+
+    function onStartAnimation() {
         $wrapper.mouseenter(function() {
             $controls.show();
         }).mouseleave(function() {
             $controls.hide();
         });
-    }
-
-    function onStartAnimation() {
         _updateForState(state.playing);
     }
 
     function init(tl) {
         timeline = tl;
         _initSlider();
-        _addEventListeners();
+        _addTimelineListeners();
     }
 
     return {
