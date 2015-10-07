@@ -8,7 +8,7 @@
                 x: util.random(-500, 500),
                 y: util.random(-500, 500),
                 z: util.random(-500, 500),
-                scale: .1,
+                scale: 0.1,
                 delay: i * opts.effectMagnitude,
                 yoyo: opts.yoyoFlag,
                 repeat: opts.repeat,

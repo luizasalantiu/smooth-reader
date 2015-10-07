@@ -23,7 +23,7 @@
                 ease: opts.easeEffectOut,
                 delay: opts.durationStay
             });
-    };
+    }
 
 }(jQuery));
 

@@ -1,6 +1,6 @@
 var rabbiEisikOfCrakow  = rabbiEisikOfCrakow  || {};
 
-rabbiEisikOfCrakow.story = 'The Story of Rabbi Eisik of Crakow\nAfter many years of great poverty which had never shaken his faith in G-d, he dreamed someone bade him look for a treasure in Prague, under the bridge which leads to the King’s palace.\nWhen the dream recurred a third time, Rabbi Eisik prepared for the journey and set out for Prague. But the bridge was guarded day and night and he did not dare to start digging. Nevertheless, he went to the bridge every morning and kept walking around it until evening.\nFinally, the captain of the guards, who had been watching him, asked in a kindly way whether he was looking for something or waiting for somebody. Rabbi Eisik told him of the dream which had brought him here from a faraway country.\nThe captain laughed: “And so to please the dream, you poor fellow wore out your shoes to come here! As for having faith in dreams, if I had it, I should have had to get going when a dream once told me to go to Cracow and dig for treasure under the stove in the room of a Jew – Eisik, son of Yekel, that was the name! Eisik, son of Yekel! I can just imagine what it would be like, how I should have to try every house over there, where one half of the Jews are named Eisik, and the other, Yekel!” And he laughed again.\nRabbi Eisik bowed, traveled home, dug up the treasure from under the stove, and built the house of prayer which is called "Reb Eisik’s Shul".';
+rabbiEisikOfCrakow.story = "The Story of Rabbi Eisik of Crakow\nAfter many years of great poverty which had never shaken his faith in God, he dreamed someone bade him look for a treasure in Prague, under the bridge which leads to the King's palace.\nWhen the dream recurred a third time, Rabbi Eisik prepared for the journey and set out for Prague. But the bridge was guarded day and night and he did not dare to start digging. Nevertheless, he went to the bridge every morning and kept walking around it until evening.\nFinally, the captain of the guards, who had been watching him, asked in a kindly way whether he was looking for something or waiting for somebody. Rabbi Eisik told him of the dream which had brought him here from a faraway country.\nThe captain laughed: \"And so to please the dream, you poor fellow wore out your shoes to come here! As for having faith in dreams, if I had it, I should have had to get going when a dream once told me to go to Cracow and dig for treasure under the stove in the room of a Jew – Eisik, son of Yekel, that was the name! Eisik, son of Yekel! I can just imagine what it would be like, how I should have to try every house over there, where one half of the Jews are named Eisik, and the other, Yekel!\" And he laughed again.\nRabbi Eisik bowed, traveled home, dug up the treasure from under the stove, and built the house of prayer which is called \"Reb Eisik's Shul\".";
 (function($) {
     $.fn.expandAndFadeOut = function(options) {
         var opts = $.extend({}, $.fn.expandAndFadeOut.defaults, options);
@@ -39,7 +39,7 @@ $.fn.expandAndFadeOut.defaults = {
                 x: util.random(-500, 500),
                 y: util.random(-500, 500),
                 z: util.random(-500, 500),
-                scale: .1,
+                scale: 0.1,
                 delay: i * opts.effectMagnitude,
                 yoyo: opts.yoyoFlag,
                 repeat: opts.repeat,
@@ -84,7 +84,7 @@ $.fn.flyIn.defaults = {
                 ease: opts.easeEffectOut,
                 delay: opts.durationStay
             });
-    };
+    }
 
 }(jQuery));
 
@@ -154,17 +154,17 @@ var TimelineControls = (function() {
     function _play() {
         timeline.play();
         _updateForState(state.playing);
-    };
+    }
 
     function _pause() {
         timeline.pause();
         _updateForState(state.paused);
-    };
+    }
 
     function _restart() {
         timeline.restart();
         _updateForState(state.playing);
-    };
+    }
 
     function _updateForState(_state) {
         switch (_state) {
@@ -184,24 +184,24 @@ var TimelineControls = (function() {
             default:
                 throw new TypeError('An invalid state was supplied');
         }
-    };
+    }
 
     function _updateSlider() {
         $("#slider").slider("value", timeline.progress() * 100);
-    };
+    }
 
     function _initSlider() {
         $("#slider").slider({
             range: false,
             min: 0,
             max: 100,
-            step: .1,
+            step: 0.1,
             slide: function(event, ui) {
                 _pause();
                 timeline.progress(ui.value / 100);
             }
         });
-    };
+    }
 
     function _addEventListeners() {
         timeline.eventCallback("onUpdate", _updateSlider);
@@ -215,13 +215,13 @@ var TimelineControls = (function() {
 
     function onStartAnimation() {
         _updateForState(state.playing);
-    };
+    }
 
     function init(tl) {
         timeline = tl;
         _initSlider();
         _addEventListeners();
-    };
+    }
 
     return {
         init: init,
@@ -249,23 +249,23 @@ var StoryViewModel = (function() {
 
         $content = $el.find(".content");
         util.fixHeight($content);
-    };
+    }
 
     function init(story, callback) {
         _story = story;
         _render(callback);
-    };
+    }
 
     function getTitle() {
         if ($title === undefined) {
             $title = $el.find(".title");
         }
         return $title;
-    };
+    }
 
     function hideTitle() {
         getTitle().hide();
-    };
+    }
 
     function getSections() {
         return $el.find("p");
@@ -292,7 +292,7 @@ Story.prototype.getTitle = function() {
 
 Story.prototype.getSections = function() {
     return this.sections;
-}
+};
 var StoryAnimation = (function() {
     var _storyViewModel;
     var _timelineControls = TimelineControls;
@@ -325,19 +325,19 @@ var StoryAnimation = (function() {
         });
 
         return that;
-    };
+    }
 
     function hideTitleWithDelay(delay) {
         setTimeout(_storyViewModel.hideTitle, delay); // transform to milliseconds
 
         return that;
-    };
+    }
 
     function animateContentWithDelay(delay) {
         setTimeout(animateContent, delay); // transform to milliseconds
 
         return that;
-    };
+    }
 
     function animateContent() {
         _timelineControls.onStartAnimation();
@@ -346,7 +346,7 @@ var StoryAnimation = (function() {
         });
 
         return that;
-    };
+    }
 
     function getTitleAnimMillisec() {
         var total = _titleAnimConfig.flyInDuration + _titleAnimConfig.stayDuration + _titleAnimConfig.fadeOutDuration;
@@ -357,7 +357,7 @@ var StoryAnimation = (function() {
     function start() {
         var animateContentDelay = getTitleAnimMillisec();
         animateTitle().animateContentWithDelay(animateContentDelay);
-    };
+    }
 
     function init(storyViewModel) {
         _storyViewModel = storyViewModel;

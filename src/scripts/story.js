@@ -19,23 +19,23 @@ var StoryViewModel = (function() {
 
         $content = $el.find(".content");
         util.fixHeight($content);
-    };
+    }
 
     function init(story, callback) {
         _story = story;
         _render(callback);
-    };
+    }
 
     function getTitle() {
         if ($title === undefined) {
             $title = $el.find(".title");
         }
         return $title;
-    };
+    }
 
     function hideTitle() {
         getTitle().hide();
-    };
+    }
 
     function getSections() {
         return $el.find("p");
@@ -62,4 +62,4 @@ Story.prototype.getTitle = function() {
 
 Story.prototype.getSections = function() {
     return this.sections;
-}
+};

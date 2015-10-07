@@ -14,17 +14,17 @@ var TimelineControls = (function() {
     function _play() {
         timeline.play();
         _updateForState(state.playing);
-    };
+    }
 
     function _pause() {
         timeline.pause();
         _updateForState(state.paused);
-    };
+    }
 
     function _restart() {
         timeline.restart();
         _updateForState(state.playing);
-    };
+    }
 
     function _updateForState(_state) {
         switch (_state) {
@@ -44,24 +44,24 @@ var TimelineControls = (function() {
             default:
                 throw new TypeError('An invalid state was supplied');
         }
-    };
+    }
 
     function _updateSlider() {
         $("#slider").slider("value", timeline.progress() * 100);
-    };
+    }
 
     function _initSlider() {
         $("#slider").slider({
             range: false,
             min: 0,
             max: 100,
-            step: .1,
+            step: 0.1,
             slide: function(event, ui) {
                 _pause();
                 timeline.progress(ui.value / 100);
             }
         });
-    };
+    }
 
     function _addEventListeners() {
         timeline.eventCallback("onUpdate", _updateSlider);
@@ -75,13 +75,13 @@ var TimelineControls = (function() {
 
     function onStartAnimation() {
         _updateForState(state.playing);
-    };
+    }
 
     function init(tl) {
         timeline = tl;
         _initSlider();
         _addEventListeners();
-    };
+    }
 
     return {
         init: init,

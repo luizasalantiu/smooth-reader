@@ -30,19 +30,19 @@ var StoryAnimation = (function() {
         });
 
         return that;
-    };
+    }
 
     function hideTitleWithDelay(delay) {
         setTimeout(_storyViewModel.hideTitle, delay); // transform to milliseconds
 
         return that;
-    };
+    }
 
     function animateContentWithDelay(delay) {
         setTimeout(animateContent, delay); // transform to milliseconds
 
         return that;
-    };
+    }
 
     function animateContent() {
         _timelineControls.onStartAnimation();
@@ -51,7 +51,7 @@ var StoryAnimation = (function() {
         });
 
         return that;
-    };
+    }
 
     function getTitleAnimMillisec() {
         var total = _titleAnimConfig.flyInDuration + _titleAnimConfig.stayDuration + _titleAnimConfig.fadeOutDuration;
@@ -62,7 +62,7 @@ var StoryAnimation = (function() {
     function start() {
         var animateContentDelay = getTitleAnimMillisec();
         animateTitle().animateContentWithDelay(animateContentDelay);
-    };
+    }
 
     function init(storyViewModel) {
         _storyViewModel = storyViewModel;
