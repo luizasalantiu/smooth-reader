@@ -345,8 +345,7 @@ var StoryAnimation = (function() {
 
     function start() {
         var animateContentDelay = getTitleAnimMillisec();
-        //animateTitle().hideTitleWithDelay(animateContentDelay).animateContentWithDelay(animateContentDelay);
-        hideTitleWithDelay(0).animateContentWithDelay(0);
+        animateTitle().hideTitleWithDelay(animateContentDelay).animateContentWithDelay(animateContentDelay);
     }
 
     function init(storyViewModel, timelineControls) {
